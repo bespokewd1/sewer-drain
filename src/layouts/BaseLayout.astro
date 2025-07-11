@@ -7,6 +7,7 @@ import Footer from "@components/Footer.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
 import "@styles/global.css";
+import StickyCta from "@components/StickyCta.astro";
 
 // Define a type for images from the content collection
 type ContentImage = {
@@ -96,6 +97,8 @@ const { description, title, preloadedImage } = Astro.props as Props;
                 <slot/>
             </main>
             <Footer />
+            <StickyCta/>
+
 
         </body>
 </html>
