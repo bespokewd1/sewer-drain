@@ -4,8 +4,8 @@
 	"version": "2.2.4",
 	"scripts": {
 		"astro": "astro dev",
-   "decap": "npx decap-server",
-   "dev": "npm-run-all --parallel astro decap",
+		"decap": "npx decap-server",
+		"dev": "npm-run-all --parallel astro decap",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview"
@@ -17,6 +17,7 @@
 		"astro": "^5.7.12",
 		"astro-icon": "^1.1.1",
 		"autoprefixer": "^10.4.20",
+		"blaze-slider": "^1.9.3",
 		"decap-server": "^3.3.0",
 		"less": "^4.2.0",
 		"tailwindcss": "^4.1.11",
