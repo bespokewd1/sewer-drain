@@ -1,21 +1,20 @@
 ---
-import { Image } from "astro:assets";
-import "blaze-slider/dist/blaze.css";
-import googleIcon from "@assets/images/icons/google-review-icon.webp";
-import CSPicture from "./TemplateComponents/CSPicture.astro";
+import { Image } from 'astro:assets';
+import 'blaze-slider/dist/blaze.css';
+import googleIcon from '@assets/images/Icons/google-review-icon.webp';
 
 const testimonials = [
   {
-    name: "Miles McMillan",
-    text: "”We worked with Jack at KMS when we had our basement contracted. He did all the plumbing for our basement bathroom. He provides high quality work and very pleasant to work with. When we had an issue, he came out same day and kept in contact with me to ensure it got completed. He even followed up to ensure all was working well. I would hire again.”",
+    name: 'Miles McMillan',
+    text: '”We worked with Jack at KMS when we had our basement contracted. He did all the plumbing for our basement bathroom. He provides high quality work and very pleasant to work with. When we had an issue, he came out same day and kept in contact with me to ensure it got completed. He even followed up to ensure all was working well. I would hire again.”',
   },
   {
-    name: "Dave O.",
-    text: "”Jack installed a new faucet and some upgraded sink components for us; the service and workmanship were fantastic. He was very thorough in assessing our needs/expectations prior to the job; the customer service was excellent throughout our experience. I highly recommend KMS Plumbing.”",
+    name: 'Dave O.',
+    text: '”Jack installed a new faucet and some upgraded sink components for us; the service and workmanship were fantastic. He was very thorough in assessing our needs/expectations prior to the job; the customer service was excellent throughout our experience. I highly recommend KMS Plumbing.”',
   },
   {
-    name: "Alex Chan",
-    text: "”I just had my hot water tank replacement completed by Jack Kumar of KMS Plumbing & Gas fitting. Prior to this job, Jack had replaced a toilet for us and completed a hot water tank replacement for a senior friend of ours. As usual, Jack is on time and professional. His workmanship is great. Housekeeping is excellent. Pricing is reasonable. Thanks for your service Jack.”",
+    name: 'Alex Chan',
+    text: '”I just had my hot water tank replacement completed by Jack Kumar of KMS Plumbing & Gas fitting. Prior to this job, Jack had replaced a toilet for us and completed a hot water tank replacement for a senior friend of ours. As usual, Jack is on time and professional. His workmanship is great. Housekeeping is excellent. Pricing is reasonable. Thanks for your service Jack.”',
   },
 ];
 ---
@@ -25,7 +24,7 @@ const testimonials = [
 <section
   id="reviews-1833"
   class:list={[
-    "relative z-[1] overflow-hidden bg-gray-100 py-[var(--sectionPadding)] ",
+    'relative z-[1] overflow-hidden bg-gray-100 py-[var(--sectionPadding)] ',
   ]}
 >
   <div
@@ -78,9 +77,9 @@ const testimonials = [
         <div class="blaze-nav p-[1.5rem_1rem]">
           <div
             class:list={[
-              "blaze-pagination flex justify-center gap-[5px]",
-              "[&>button]:rounded-full [&>button]:bg-[#ccc] [&>button]:text-transparent [&>button]:border-none [&>button]:cursor-pointer [&>button]:transition-colors [&>button]:duration-300 [&>button]:ease-in-out [&>button]:text-[0px] [&>button]:p-[5px]",
-              "[&>button.active]:bg-(--primary)",
+              'blaze-pagination flex justify-center gap-[5px]',
+              '[&>button]:rounded-full [&>button]:bg-[#ccc] [&>button]:text-transparent [&>button]:border-none [&>button]:cursor-pointer [&>button]:transition-colors [&>button]:duration-300 [&>button]:ease-in-out [&>button]:text-[0px] [&>button]:p-[5px]',
+              '[&>button.active]:bg-(--primary)',
             ]}
           >
           </div>
@@ -116,9 +115,9 @@ const testimonials = [
   </picture>
 
   <script>
-    import BlazeSlider from "blaze-slider";
+    import BlazeSlider from 'blaze-slider';
 
-    const el = document.querySelector(".blaze-slider") as HTMLElement;
+    const el = document.querySelector('.blaze-slider') as HTMLElement;
     if (el) {
       new BlazeSlider(el);
     }
