@@ -2,7 +2,6 @@
 import navData from '@data/navData.json';
 import client from '@data/client.json';
 import DarkModeToggle from '@components/DarkModeToggle.astro';
-import rayBachLogo from '@assets/images/logos/raybach-logo.png';
 import { Image } from 'astro:assets';
 import InstagramIcon from '@components/Icons/InstagramIcon.astro';
 import YoutubeIcon from '@components/Icons/YoutubeIcon.astro';
@@ -17,7 +16,12 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
     <!--Nav Logo-->
     <div class="flex items-center gap-2">
       <a href="/" class="flex-1 cs-logo" aria-label="back to home">
-        <Image src={rayBachLogo} alt="Ray Bach Logo" width={210} height={29} />
+        <Image
+          src="https://storage.builderall.com//franquias/2/893617/editor-html/12227593.png"
+          alt="Ray Bach Logo"
+          width={210}
+          height={29}
+        />
       </a>
 
       <div class="hidden md:block">
