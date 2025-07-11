@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import 'blaze-slider/dist/blaze.css';
-import googleIcon from '@assets/images/Icons/google-review-icon.webp';
+// import googleIcon from '@assets/images/Icons/google-review-icon.webp';
 
 const testimonials = [
   {
@@ -61,8 +61,12 @@ const testimonials = [
                       <span class="cs-name mb-[0.25rem] block font-[700] text-[1.25rem] leading-[1.2em] text-[var(--headerColor)]">
                         {testimonial.name}
                       </span>
-                      <Image
-                        src={googleIcon}
+
+                      {/* src={googleIcon} */}
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        src="https://kms-draft.netlify.app/assets/images/google-review-icon.webp"
                         alt="Google Review Icon"
                         height={50}
                       />
