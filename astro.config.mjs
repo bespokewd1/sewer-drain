@@ -1,9 +1,13 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://www.yourwebsite.com", // update me!
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  site: "https://sewer-drain.netlify.app/", // update me!
   integrations: [
     icon(),
     sitemap({

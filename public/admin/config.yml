@@ -1,4 +1,5 @@
 # Use DecapBridge auth (required)
+local_backend: true
 backend:
   name: git-gateway
   repo: CodeStitchOfficial/Intermediate-Astro-Decap-CMS
@@ -36,5 +37,10 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Cover Image", name: "image", widget: "image" }
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
-      - { label: "Is it a featured post?", name: "isFeatured", widget: "boolean", default: false }
+      - {
+          label: "Is it a featured post?",
+          name: "isFeatured",
+          widget: "boolean",
+          default: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
