@@ -12,14 +12,15 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
 ---
 
 <!-- ============================================ --><!--                 Navigation                   --><!-- ============================================ -->
-<header id="cs-navigation" class="px-0">
+<header id="cs-navigation" class="p-0">
   <article class="cs-container justify-between py-2 px-4">
     <!--Nav Logo-->
     <div class="flex items-center gap-2">
       <a href="/" class="flex-1 cs-logo" aria-label="back to home">
         <Image src={rayBachLogo} alt="Ray Bach Logo" width={210} height={29} />
       </a>
-      <div>
+
+      <div class="hidden md:block">
         <p class="font-bold text-(--headerColor) text-xl">
           Sewer & Drain Cleaning Services
         </p>
@@ -34,16 +35,24 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
     </div>
 
     <div class="flex flex-col gap-1 justify-center items-center">
-      <p class="font-bold italic">Follow Us For Expert Tips</p>
+      <p class="font-bold text-xs md:text-base italic">
+        Follow Us For Expert Tips
+      </p>
       <div class="flex justify-center items-center gap-2">
-        <a class="cs-button-solid h-full p-1 rounded-md before:rounded-md">
-          <InstagramIcon class:list={'text-4xl'} />
+        <a
+          class="cs-button-solid inline-block h-full p-1 rounded-md before:rounded-md"
+        >
+          <InstagramIcon class:list={'text-2xl sm:text-3xl md:text-4xl'} />
         </a>
-        <a class="cs-button-solid h-full p-1 rounded-md before:rounded-md">
-          <FacebookIcon class:list={'text-4xl'} />
+        <a
+          class="cs-button-solid inline-block h-full p-1 rounded-md before:rounded-md"
+        >
+          <FacebookIcon class:list={'text-2xl sm:text-3xl md:text-4xl'} />
         </a>
-        <a class="cs-button-solid h-full p-1 rounded-md before:rounded-md">
-          <YoutubeIcon class:list={'text-4xl'} />
+        <a
+          class="cs-button-solid inline-block h-full p-1 rounded-md before:rounded-md"
+        >
+          <YoutubeIcon class:list={'text-2xl sm:text-3xl md:text-4xl'} />
         </a>
       </div>
     </div>
@@ -68,7 +77,7 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
           </div>
         </button>
         <!-- If you want to use another navigation stitch and enjoy the benefits of dynamic routing, replace the .cs-ul-wrapper in the navigation stitch with this one below -->
-        <div class="cs-ul-wrapper">
+        <div class="cs-ul-wrapper bg-(--primary) font-semibold uppercase">
           <ul id="cs-expanded-ul" class="cs-ul">
             {
               navData.map((entry) => (
@@ -84,7 +93,7 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
                       aria-expanded="false"
                       aria-controls={`submenu-${entry.key}`}
                       class:list={[
-                        'cs-li-link cs-dropdown-button text-(--bodyTextColorWhite)',
+                        'cs-li-link cs-dropdown-button md:text-(--bodyTextColorWhite) uppercase font-semibold',
                         { 'cs-active': Astro.url.pathname.includes(entry.url) },
                       ]}
                     >
@@ -96,7 +105,7 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
                     <a
                       href={entry.url}
                       class:list={[
-                        'cs-li-link text-(--bodyTextColorWhite)',
+                        'cs-li-link md:text-(--bodyTextColorWhite)',
                         { 'cs-active': Astro.url.pathname === entry.url },
                       ]}
                       aria-current={
@@ -117,7 +126,7 @@ import PhoneIcon from './Icons/PhoneIcon.astro';
                         <li class="cs-drop-li">
                           <a
                             href={child.url}
-                            class="cs-li-link cs-drop-link hover:bg-black text-(--bodyTextColorWhite) transition-colors duration-300"
+                            class="cs-li-link cs-drop-link hover:bg-black text-black md:text-(--bodyTextColorWhite) transition-colors duration-300"
                             aria-current={
                               Astro.url.pathname === child.url
                                 ? 'page'
