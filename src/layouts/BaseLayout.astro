@@ -21,12 +21,12 @@ type ContentImage = {
 type PreloadedImage = GetImageResult | ContentImage;
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   preloadedImage?: PreloadedImage; // optional - passing a preloadedImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
 }
 
-const { description, title, preloadedImage } = Astro.props as Props;
+const { description = "We are your trusted partner for reliable sewer & drain solutions In Edmonton and surrounding areas. Our services include clearing plugged toilets, sinks, lines, and drains. We also provide root cutting, video inspections, stack cleaning, corrosion removal, high-pressure flushing and thawing frozen line solutions for commercial and residential needs.", title="RayBach Sewer & Drain | Cleaning Services", preloadedImage } = Astro.props as Props;
 
 ---
 

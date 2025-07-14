@@ -3,12 +3,18 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 
+import netlify from "@astrojs/netlify";
+
 export default defineConfig({
   output: 'static',
+
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://sewer-drain.netlify.app/", // update me!
+
+  // update me!
+  site: "https://sewer-drain.netlify.app/",
+
   integrations: [
     icon(),
     sitemap({
@@ -17,4 +23,6 @@ export default defineConfig({
       priority: 0.7,
     }),
   ],
+
+  adapter: netlify(),
 });
