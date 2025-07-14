@@ -1,13 +1,15 @@
 @import "tailwindcss" important;
 
-/* Hover highlight for the star container */
-/*#starContainer:has(.star[data-rating="1"]:hover) .star:nth-child(-n + 1),*/
-/*#starContainer:has(.star[data-rating="2"]:hover) .star:nth-child(-n + 2),*/
-/*#starContainer:has(.star[data-rating="3"]:hover) .star:nth-child(-n + 3),*/
-/*#starContainer:has(.star[data-rating="4"]:hover) .star:nth-child(-n + 4),*/
-/*#starContainer:has(.star[data-rating="5"]:hover) .star:nth-child(-n + 5) {*/
-/*    @apply text-yellow-400;*/
-/*}*/
+@import url("https://fonts.cdnfonts.com/css/montserrat");
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+@import url('https://fonts.cdnfonts.com/css/muli');
+
+/* 2. Tell Tailwind the new font family */
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-segoe: "Segoe UI", sans-serif;
+  --font-muli: 'Muli', sans-serif;
+}
 
 .star {
     @apply transition-colors duration-200;

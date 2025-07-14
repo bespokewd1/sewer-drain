@@ -1,36 +1,63 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
-import FAQ from "@components/FAQ.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTA from '@components/CTA.astro';
+import FAQ from '@components/FAQ.astro';
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
-import { getImage } from "astro:assets";
-import Testimonials from "@components/Testimonials.astro";
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
+// import landingImage from '@assets/images/landing.jpg'; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import { getImage } from 'astro:assets';
+import Testimonials from '@components/Testimonials.astro';
+// const optimizedImage = await getImage({ src: landingImage, format: 'avif' });
+const optimizedImage = '/assets/images/pipes.webp';
 ---
 
-<BaseLayout
-  preloadedImage={optimizedImage}
->
+<BaseLayout preloadedImage={optimizedImage}>
   <!-- ============================================ -->
   <!--                    Hero                      -->
   <!-- ============================================ -->
 
-  <section id="hero">
-    <div class="cs-container">
-      <div class="cs-flex-group">
-        <span class="cs-topper text-red-500">Intermediate Kit</span>
-        <h1 class="cs-title">Intermediate Astro v4 <br /> Decap CMS</h1>
-        <p class="cs-text">
-          This intermediate kit includes a pre-configured Astro environment,
-          which allows for repeated components, centralized data and greater
-          room to scale as your clients grow. Decap CMS has been integrated to
-          run a blog.
-        </p>
-        <a href="/about" class="cs-button-solid">Explore More</a>
-        <a href="/contact" class="cs-button-transparent">
-          <img
+  <section id="hero" class="overlay">
+    <div
+      class:list={[
+        'container px-4 cs-container flex flex-col items-center justify-center gap-6 max-w-[500px] ',
+        'md:px-2 ',
+        'lg:max-w-[960px] ',
+        ' xl:px-0 xl:flex-row ',
+      ]}
+    >
+      <!-- 'xl:max-w-[1140px] xl:px-0 xl:flex-row ', -->
+      <div class="contents xl:flex flex-col gap-4">
+        <div class="flex flex-col gap-4 px-2 lg:max-w-[500px] text-start">
+          <span
+            class:list={[
+              'text-xs text-(--primary) font-normal text-shadow-md/45 tracking-widest font-montserrat',
+              'md:text-[30px] md:tracking-wide',
+            ]}>RayBach Sewer & Drains:</span
+          >
+          <h1
+            class:list={[
+              'text-xl font-bold text-(--bodyTextColorWhite) text-pretty text-shadow-md/30 tracking-wide font-segoe',
+              'md:text-[40px] ',
+            ]}
+          >
+            Your Trusted Partner for Reliable Sewer & Drain Solutions In
+            Edmonton
+          </h1>
+          <p
+            class:list={[
+              'text-(--primary) font-semibold italic leading-5 text-shadow-md/45 tracking-wide text-sm font-muli',
+              'md:text-[18px]',
+            ]}
+          >
+            helping homeowners & businesses maintain healthy drain lines!
+          </p>
+        </div>
+
+        <a
+          href="/contact"
+          class="cs-button-solid rounded-md order-3 w-full uppercase max-w-[430px] py-1"
+        >
+          <!-- <img
             class="cs-img"
             loading="lazy"
             decoding="async"
@@ -38,17 +65,39 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
             alt="play icon"
             width="17"
             height="17"
-          />
-          Get in Touch
+          /> -->
+          Contact us
         </a>
+      </div>
+
+      <div
+        class:list={[
+          'embed-responsive embed-responsive-16by9 aspect-video w-full max-w-[491px] max-h-[291px] min-h-[20px]',
+          'md:mt-4',
+          'lg:max-w-[500px]',
+        ]}
+        style="transform: rotate(0deg) scale(1);"
+      >
+        <!-- width="491px"
+          height="291px" -->
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="allowfullscreen"
+          class="embed-responsive-item iframe-full-height"
+          src="https://storage.googleapis.com/msgsndr/yQdvzAmtDUTfxQqgh9gI/media/66eb33773652a4ab2f1a3f10.mp4"
+          style="border-radius: 10px; border: 9px solid rgba(247, 130, 50, 0.996);"
+        ></iframe>
       </div>
     </div>
 
     <!-- Background Image -->
     <!-- We can't use Astro <Picture /> as it does not support multiple sources -->
-    <picture class="cs-picture">
-      <source media="(max-width: 600px)" srcset="/assets/images/hero-m.webp" />
-      <source media="(min-width: 601px)" srcset="/assets/images/hero.jpg" />
+    <!-- <picture class="cs-picture">
+      <source media="(max-width: 600px)" srcset="/assets/images/pipes.webp" />
+      <source media="(min-width: 601px)" srcset="/assets/images/pipes.webp" />
       <img
         aria-hidden="true"
         decoding="async"
@@ -58,7 +107,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
         height="1667"
         loading="eager"
       />
-    </picture>
+    </picture> -->
   </section>
 
   <!-- ============================================ -->
@@ -496,7 +545,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
   /* Mobile - 360px */
   @media only screen and (min-width: 0em) {
     #hero {
-      font-family: "Roboto", "Arial", sans-serif;
+      font-family: 'Roboto', 'Arial', sans-serif;
       /* Centers button */
       text-align: center;
       /* changes on tablet */
@@ -519,7 +568,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
         &:before {
           /* Black Color Overlay */
-          content: "";
+          content: '';
           width: 100%;
           height: 100%;
           background: #000;
@@ -556,7 +605,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
         &:before {
           /* Left Line */
-          content: "";
+          content: '';
           width: 1px;
           height: 100%;
           background: -moz-linear-gradient(
@@ -575,20 +624,6 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
           top: 0;
           left: 0;
         }
-      }
-
-      .cs-flex-group {
-        width: 80vw;
-        /* 464px - 562px */
-        max-width: clamp(29em, 60vw, 35.125em);
-        margin: auto;
-        /* 60px - 220px */
-        margin-bottom: clamp(3.75em, 15.5vw, 13.75em);
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
       }
 
       .cs-topper {
@@ -640,7 +675,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
         z-index: 1;
 
         &:before {
-          content: "";
+          content: '';
           background: #000;
           opacity: 1;
           display: block;
@@ -681,7 +716,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
         padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
         &:after {
           /* Right Line */
-          content: "";
+          content: '';
           width: 1px;
           height: 100%;
           background: -moz-linear-gradient(
@@ -710,14 +745,19 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
   }
 
   /* Desktop Parallax Effect - 1300px */
-  @media only screen and (min-width: 81.25em) {
+  // @media only screen and (min-width: 81.25em) {
+  @media only screen and (min-width: 0rem) {
     #hero {
-      background: url("/assets/images/hero.jpg");
+      background: url('/assets/images/pipes.webp');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       /* creates parallax effect on background image */
       background-attachment: fixed;
+
+      .cs-picture img {
+        display: none;
+      }
     }
   }
 
@@ -800,7 +840,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
   /* Inbetween */
   @media only screen and (min-width: 768px) {
     .services {
-      font-size: ~"min(1.8vw, 1em)";
+      font-size: ~'min(1.8vw, 1em)';
       width: 98%;
       display: flex;
       justify-content: space-between;
@@ -866,7 +906,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
       .cs-left {
         /* scaling the font size with the view width */
-        font-size: ~"min(2.31vw, .7em)";
+        font-size: ~'min(2.31vw, .7em)';
         /* using ems so we can use font size to scale the whole section */
         width: (631/16em);
         height: (636/16em);
@@ -992,7 +1032,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
       }
 
       .cs-left {
-        font-size: ~"min(1.2vw, 1em)";
+        font-size: ~'min(1.2vw, 1em)';
         flex: none;
       }
 
@@ -1069,7 +1109,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
       .cs-left {
         /* scaling the font size with the view width */
-        font-size: ~"min(2.31vw, .7em)";
+        font-size: ~'min(2.31vw, .7em)';
         /* using ems so we can use font size to scale the whole section */
         width: (631/16em);
         height: (636/16em);
@@ -1190,7 +1230,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
       }
 
       .cs-left {
-        font-size: ~"min(1.2vw, 1em)";
+        font-size: ~'min(1.2vw, 1em)';
         /* sends it to the right */
         order: 2;
         flex: none;
@@ -1279,7 +1319,7 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 
       .cs-image-group {
         /* used rem so it doesn't scale with the font size of on parent */
-        font-size: ~"min(1.1vw, 1em)";
+        font-size: ~'min(1.1vw, 1em)';
         width: 100%;
         max-width: (1322/16em);
         margin: 0 auto (60/16rem);

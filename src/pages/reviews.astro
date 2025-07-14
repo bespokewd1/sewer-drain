@@ -5,12 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const optimizedImage = await getImage({src: landingImage, format: 'avif'});
 
-const title = "Reviews | KMS Plumbing & Gasfitting Ltd.";
-const description =
-  "KMS Plumbing & Gasfitting Ltd. – Providing efficient, reliable plumbing, heating, and gas services with 15+ years of experience. Trusted solutions for homes and businesses in Edmonton.";
 ---
 
-<BaseLayout title={title} description={description} preloadedImage={optimizedImage}>
+<BaseLayout preloadedImage={optimizedImage}>
 
   <section class="py-24 md:py-40">
     <div

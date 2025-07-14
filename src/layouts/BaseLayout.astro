@@ -18,7 +18,7 @@ type ContentImage = {
 };
 
 // Create a union type for preloadedImage
-type PreloadedImage = GetImageResult | ContentImage;
+type PreloadedImage = GetImageResult | ContentImage | string;
 
 interface Props {
   title?: string;
