@@ -1,1 +1,21 @@
 @import "tailwindcss" important;
+
+/* Hover highlight for the star container */
+/*#starContainer:has(.star[data-rating="1"]:hover) .star:nth-child(-n + 1),*/
+/*#starContainer:has(.star[data-rating="2"]:hover) .star:nth-child(-n + 2),*/
+/*#starContainer:has(.star[data-rating="3"]:hover) .star:nth-child(-n + 3),*/
+/*#starContainer:has(.star[data-rating="4"]:hover) .star:nth-child(-n + 4),*/
+/*#starContainer:has(.star[data-rating="5"]:hover) .star:nth-child(-n + 5) {*/
+/*    @apply text-yellow-400;*/
+/*}*/
+
+.star {
+    @apply transition-colors duration-200;
+}
+
+.star:hover,
+.star.active,
+.star:has(~ .star:hover) ,
+.star:has(~ .star.active)  {
+    @apply text-yellow-400;
+}

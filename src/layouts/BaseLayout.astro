@@ -88,6 +88,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <!-- Sitewide Scripts -->
             <script src="@js/nav.js"></script>
         </head>
+
         <body>
             <!-- Screen reader skip main nav -->
             <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
@@ -135,7 +136,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
       theme === "dark" ? enableDarkMode() : disableDarkMode();
     }
 
-    setTheme();
+    <!--setTheme();-->
 
-    document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-  </script>
+    <!--document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.-->
+</script>

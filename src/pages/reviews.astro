@@ -1,366 +1,204 @@
----
-import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
-import Landing from "@components/Landing.astro";
-
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
+﻿---
 import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
 const optimizedImage = await getImage({src: landingImage, format: 'avif'});
+
+const title = "Reviews | KMS Plumbing & Gasfitting Ltd.";
+const description =
+  "KMS Plumbing & Gasfitting Ltd. – Providing efficient, reliable plumbing, heating, and gas services with 15+ years of experience. Trusted solutions for homes and businesses in Edmonton.";
 ---
 
-<BaseLayout
-  title="Reviews"
-  description="Meta description for the page"
-  preloadedImage = {optimizedImage}
->
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
+<BaseLayout title={title} description={description} preloadedImage={optimizedImage}>
 
-  <Landing 
-    title="Reviews"
-    image={optimizedImage}
-  />
+  <main class="py-24 md:py-40">
+    <div
+      class="mx-auto w-11/12 max-w-xl rounded-xl bg-white p-8 shadow-xl md:p-12"
+    >
+      <h1 class="mb-2 pt-8 text-xl font-bold md:text-3xl">
+        Thank You for Choosing RayBach Sewer & Drains.
+      </h1>
 
-  <!-- ============================================ -->
-  <!--                  Reviews                     -->
-  <!-- ============================================ -->
+      <p class="mb-8 text-sm text-gray-600 md:text-base">
+        We’re grateful you trusted us with your sewer and drains.
+        Please take a moment to rate your experience.
+        <br /><br />
+        <strong>
+          If you’re satisfied with our service, please select 5 stars and leave
+          us a Google review.
+        </strong>
+        <br />
+        <strong>
+          If your experience was anything less than great, we’d love your honest
+          feedback so we can make it right.
+        </strong>
+      </p>
 
-  <section id="reviews">
-    <div class="container">
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
-        </p>
-        <div class="star-group">
-          <span class="name">B Miller<span class="desc">Homeowner</span></span>
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
-        </div>
+      <!-- Star rating -->
+      <div id="starContainer" class="mb-6 flex justify-center gap-2 text-5xl">
+        <span class="star cursor-pointer" data-rating="1">★</span>
+        <span class="star cursor-pointer" data-rating="2">★</span>
+        <span class="star cursor-pointer" data-rating="3">★</span>
+        <a
+          href="https://maps.app.goo.gl/6TGrPNiHQbmjNtA48"
+          target="_blank"
+          class="no-underline star cursor-pointer"
+          style="all:unset"
+          data-rating="4"
+        >
+          ★
+        </a>
+        <a
+          href="https://maps.app.goo.gl/6TGrPNiHQbmjNtA48"
+          target="_blank"
+          class="no-underline cursor-pointer star"
+          data-rating="5"
+          style="all:unset"
+        >
+          ★
+        </a>
       </div>
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
+
+      <!-- Positive feedback -->
+      <div id="goodFeedback" class="hidden">
+        <p class="mb-4">
+          Thank you! We're thrilled you’re happy with our service. Please click
+          below to leave us a Google review:
         </p>
-        <div class="star-group">
-          <span class="name">Vincent M.<span class="desc">Homeowner</span></span
+        <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <a
+            href="https://www.facebook.com/raybachsewer"
+            target="_blank"
+            class="rounded-md bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700"
           >
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
-        </div>
-      </div>
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
-        </p>
-        <div class="star-group">
-          <span class="name">Alex L.<span class="desc">Homeowner</span></span>
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
-        </div>
-      </div>
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile-woman.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
-        </p>
-        <div class="star-group">
-          <span class="name"
-            >Arrieana M.<span class="desc">Homeowner</span></span
+            Leave a Facebook Review
+          </a>
+          <a
+            href="https://maps.app.goo.gl/6TGrPNiHQbmjNtA48"
+            target="_blank"
+            class="rounded-md bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700"
           >
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
+            Leave a Google Review
+          </a>
         </div>
       </div>
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
+
+      <!-- Negative feedback -->
+      <div id="badFeedback" class="hidden">
+        <p class="mb-4">
+          We're sorry we didn’t meet your expectations. Please share your
+          feedback and we’ll get in touch right away.
         </p>
-        <div class="star-group">
-          <span class="name">Leo N.<span class="desc">Homeowner</span></span>
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
-        </div>
+        <textarea
+          rows="4"
+          placeholder="Tell us what happened..."
+          class="w-full rounded-md border border-gray-300 p-3"
+        ></textarea>
+        <input
+          type="text"
+          placeholder="Your name (optional)"
+          class="mt-3 w-full rounded-md border border-gray-300 p-3"
+        />
+        <input
+          type="email"
+          placeholder="Your email or phone (optional)"
+          class="mt-3 w-full rounded-md border border-gray-300 p-3"
+        />
+        <button
+          onclick="sendFeedback()"
+          class="mt-4 w-full rounded-md bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700"
+        >
+          Submit Feedback
+        </button>
       </div>
-      <div class="review">
-        <picture>
-          <img
-            class="profile"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/profile.svg"
-            alt=""
-            width="99"
-            height="99"
-          />
-        </picture>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-          recusandae rerum unde similique ratione sapiente necessitatibus natus
-          mollitia nam iusto.
-        </p>
-        <div class="star-group">
-          <span class="name">Brian A.<span class="desc">Homeowner</span></span>
-          <picture>
-            <img
-              aria-hidden="true"
-              loading="lazy"
-              decoding="async"
-              src="/assets/svgs/stars.svg"
-              alt="stars"
-              width="91"
-              height="15"
-            />
-          </picture>
-        </div>
-      </div>
+
+      <p class="mt-10 text-center text-xs text-gray-500">
+        Powered by
+        <a
+          href="https://bespokewebdesign.ca/"
+          target="_blank"
+          class="underline hover:text-gray-700"
+        >Bespoke Web Design Edmonton</a
+        >
+      </p>
     </div>
-  </section>
-  <CTA />
+
+    <!--<div class="mx-auto mt-12 h-12 w-11/12 max-w-xl border-b-2 border-blue-600">-->
+    <!--</div>-->
+  </main>
 </BaseLayout>
 
-<style lang="less">
-  /* PAGE-SPECIFIC STYLES FOR THE REVIEWS PAGE */
 
-  /*-- -------------------------- -->
-<---           Reviews          -->
-<--- -------------------------- -*/
+<script>
+  // Event delegation for star ratings
+  const starContainer = document.getElementById("starContainer");
+  const goodFeedback = document.getElementById("goodFeedback");
+  const badFeedback = document.getElementById("badFeedback");
+  let rate : number | null = null;
+  let activeStar : HTMLElement | null = null;
 
-  /* Mobile */
-  @media only screen and (min-width: 0em) {
-    #reviews {
-      margin: auto;
-      padding-top: (120/16rem);
-      padding-bottom: (50/16rem);
+  if (starContainer && goodFeedback && badFeedback) {
+    starContainer.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if(activeStar) activeStar.classList.remove("active");
+      target.classList.toggle("active");
+      activeStar = target;
 
-      .container {
-        width: 96%;
-        max-width: (1320/16rem);
-      }
+      if (target.classList.contains("star")) {
+        const rating = parseInt(target.dataset.rating || "0", 10);
+        rate = rating;
 
-      .review {
-        width: 100%;
-        max-width: (410/16rem);
-        margin: auto;
-        margin-bottom: (100/16rem);
-        padding: (64/16rem) (30/16rem) (18/16rem) (30/16rem);
-        background: #fff;
-        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
-        border-radius: (5/16rem);
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-
-        .profile {
-          width: (99/16rem);
-          height: (99/16rem);
-          margin-bottom: (16/16rem);
-          margin-left: 0;
-          border-radius: 50%;
-          display: block;
-          position: absolute;
-          top: (-51/16rem);
-          left: (30/16rem);
-        }
-
-        p {
-          line-height: 1.5em;
-          text-align: left;
-          margin-bottom: (28/16rem);
-        }
-
-        .star-group {
-          margin-top: auto;
-          padding-top: (16/16rem);
-          border-top: 1px solid #e7e7e7;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: nowrap;
-
-          .name {
-            font-weight: bold;
-            line-height: (24/16rem);
-            text-align: left;
-            color: #1a1a1a;
-            display: block;
-          }
-
-          .desc {
-            font-weight: 400;
-            color: #575757;
-            display: block;
-          }
-
-          img {
-            width: (91/16rem);
-            height: (15/16rem);
-            margin: 0;
-            display: block;
-          }
+        if (rating >= 4) {
+          goodFeedback.classList.remove("hidden");
+          badFeedback.classList.add("hidden");
+        } else {
+          goodFeedback.classList.add("hidden");
+          badFeedback.classList.remove("hidden");
         }
       }
-    }
+    });
   }
 
-  /* Tablet */
-  @media only screen and (min-width: 48em) {
-    #reviews {
-      padding-top: (150/16rem);
-      padding-bottom: (50/16rem);
+  // Event delegation for submit button
+  const mainContainer = document.querySelector("main");
 
-      .container {
-        font-size: ~"min(1.4vw, 1em)";
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        column-gap: (30/16rem);
+  if (mainContainer) {
+    mainContainer.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+
+      if (target.textContent === "Submit Feedback") {
+        event.preventDefault();
+        handleFeedbackSubmission();
       }
-
-      .review {
-        margin: 0;
-        margin-bottom: (150/16rem);
-
-        &:last-of-type {
-          margin-bottom: (150/16rem);
-        }
-      }
-    }
+    });
   }
 
-  /* Dark Mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #reviews {
-        .review {
-          background: var(--medium);
+  function handleFeedbackSubmission(): void {
+    const textarea = document.querySelector("#badFeedback textarea") as HTMLTextAreaElement;
+    const nameInput = document.querySelector('#badFeedback input[type="text"]') as HTMLInputElement;
+    const contactInput = document.querySelector('#badFeedback input[type="email"]') as HTMLInputElement;
 
-          .star-group {
-            .name {
-              color: #fff;
-            }
-
-            .desc {
-              color: #fff;
-              opacity: 0.7;
-            }
-          }
-        }
-      }
+    if (!textarea || !nameInput || !contactInput) {
+      console.error("Required form elements not found");
+      return;
     }
+
+    const message = textarea.value.trim();
+    const name = nameInput.value.trim();
+    const contact = contactInput.value.trim();
+
+    if (!message) {
+      alert("Please provide feedback before submitting.");
+      return;
+    }
+
+    const email = "admin@montanoplumbing.ca";
+    const subject = encodeURIComponent("Customer Feedback - MPC");
+    const body = encodeURIComponent(
+      `Customer Feedback:\n${message}\n\nName: ${name || "Not provided"}\nContact: ${contact || "Not provided"}\n\nRate:${rate || "Unable to record"}`
+    );
+
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   }
-</style>
+</script>
