@@ -1,0 +1,18 @@
+﻿---
+interface  ImgProps {
+  width: number
+  height: number
+  src: string
+  alt: string
+}
+
+const {src,height,width,alt} = Astro.props as ImgProps
+---
+
+<img src={src}
+     alt={alt}
+     loading="lazy"
+     decoding="async"
+     fetchpriority="auto"
+     width={width}
+     height={height}>
