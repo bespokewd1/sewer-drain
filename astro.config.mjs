@@ -3,7 +3,6 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 
-import netlify from "@astrojs/netlify";
 
 export default defineConfig({
   output: 'static',
@@ -23,6 +22,4 @@ export default defineConfig({
       priority: 0.7,
     }),
   ],
-
-  adapter: netlify(),
 });
