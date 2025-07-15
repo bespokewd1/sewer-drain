@@ -9,6 +9,7 @@ interface Service {
   name: string;
   title: string;
   text: string;
+  imgSrc: string;
 }
 
 const services: Service[] = [
@@ -16,36 +17,43 @@ const services: Service[] = [
     name: 'Unclogging',
     title: 'Plugged Toilets, Sinks, Laundry Lines & Drains',
     text: 'For professional assistance with unclogging and restoring proper drainage, our experienced team offers efficient and reliable services. Trust us to quickly resolve any plumbing issues and ensure your facilities remain functioning smoothly.',
+    imgSrc: '/assets/images/unclogging.avif',
   },
   {
     name: 'Flushing',
     title: 'Flushing Drain Lines',
     text: 'We offer high-pressure flushing of drain lines to efficiently remove blockages and debris, ensuring optimal performance and preventing future issues. Our service utilizes advanced equipment to deliver thorough cleaning and restore proper flow in your drainage system.',
+    imgSrc: '/assets/images/flushing.avif',
   },
   {
     name: 'Root Cutting',
     title: 'Root Cutting Services',
     text: 'We specialize in mainline and root-cutting services to efficiently clear blockages in plumbing systems, allowing for proper water flow and drainage. Our skilled technicians use advanced equipment to effectively remove roots and debris, restoring your pipes to optimal condition.',
+    imgSrc: '/assets/images/root-cutting.avif',
   },
   {
     name: 'Video Inspection',
     title: 'Video Inspection',
     text: 'Our business specializes in video inspection and locating of drain lines, providing accurate and efficient solutions for identifying and resolving plumbing issues. With state-of-the-art technology and experienced professionals, we offer thorough inspections to detect blockages, leaks, or other problems within your drainage system.',
+    imgSrc: '/assets/images/video-inspection.avif',
   },
   {
     name: 'Stack Cleaning',
     title: 'Stack Cleaning',
     text: "Our skilled technicians use industry-leading equipment and techniques to effectively remove debris, buildup, and blockages in sewer stacks, helping to prevent potential clogs and backups. Trust us to deliver thorough and reliable stack cleaning solutions that will keep your building's sewer system running smoothly.",
+    imgSrc: '/assets/images/stack-cleaning.avif',
   },
   {
     name: 'Thawing frozen lines',
     title: 'Thawing out frozen drain lines',
     text: 'a quick and efficient service that helps prevent potential water damage and restores proper drainage functionality to your home or business. Our experienced team utilizes specialized equipment and techniques to safely and effectively eliminate blockages caused by freezing temperatures, ensuring that your plumbing system runs smoothly again.',
+    imgSrc: '/assets/images/thawing.avif',
   },
   {
     name: 'Corrosion Removal',
     title: 'Corrosion Removal',
     text: 'We specialize in professional scraping services for sewer pipes, focusing on efficient and effective removal of tough built-up lines and corrosion. With years of experience and advanced equipment, we are able to tackle even the most challenging obstructions in sewer systems. Our expert team is dedicated to ensuring optimal flow and function in sewer pipes, allowing for seamless operation and reducing the risk of backups and blockages. Trust us to deliver high-quality scraping services that exceed your expectations and keep your sewer system running smoothly.',
+    imgSrc: '/assets/images/corrosion.avif',
   },
 ];
 
@@ -60,9 +68,22 @@ export default function ServicesTabs() {
     title: service.name,
     value: service.name.toLowerCase().replace(/\s+/g, '-'),
     content: (
-      <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 md:p-10 text-white bg-gradient-to-br from-purple-700 to-violet-900">
-        <h3 className="text-xl md:text-3xl font-bold mb-4">{service.title}</h3>
-        <p className="text-sm md:text-base">{service.text}</p>
+      <div className="w-full overflow-hidden relative h-full rounded-2xl text-white">
+        {/* Glassmorphism gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-(--primary) via-[hsl(24.37,92.49%,48.24%)] to-orange-300 backdrop-blur-sm bg-opacity-80 rounded-2xl"></div>
+
+        {/* Glassmorphism overlay */}
+        <div className="absolute inset-0 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl"></div>
+
+        {/* Content */}
+        <div className="relative z-10 p-6 md:p-10">
+          <h3 className="text-xl md:text-3xl font-bold mb-4 text-white drop-shadow-lg">
+            {service.title}
+          </h3>
+          <p className="text-sm md:text-base text-white/90 leading-relaxed">
+            {service.text}
+          </p>
+        </div>
       </div>
     ),
   }));
@@ -133,7 +154,7 @@ const Tabs: React.FC<TabsProps> = ({
           // Base layout
           "flex flex-row items-center justify-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
           // Glassmorphism styling
-          "backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-2 shadow-lg shadow-black/10",
+          "backdrop-blur-[2px] bg-white/10 border border-white/20 rounded-2xl p-2 shadow-lg shadow-black/10",
           // Dark mode support
           "dark:bg-black/10 dark:border-white/10 dark:shadow-white/5",
           containerClassName
@@ -156,16 +177,22 @@ const Tabs: React.FC<TabsProps> = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 bg-gradient-to-r from-orange-300 to-(--primary) rounded-full shadow-md",
+                  "absolute inset-0 rounded-full overflow-hidden",
                   activeTabClassName
                 )}
-              />
+              >
+                {/* Gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-[hsl(24.37,92.49%,48.24%)] to-(--primary)"></div>
+
+                {/* Glassmorphism overlay */}
+                <div className="absolute inset-0 backdrop-blur-sm bg-white/20 border border-white/30"></div>
+              </motion.div>
             )}
             <span
               className={cn(
-                "relative block font-medium transition-colors duration-300 ease-in-out",
+                "relative block font-medium transition-colors duration-300 ease-in-out z-10",
                 active.value === tab.value
-                  ? "text-[var(--bodyTextColorWhite)]"
+                  ? "text-white drop-shadow-sm"
                   : "text-[var(--headerColor)]"
               )}
             >
