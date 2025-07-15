@@ -69,13 +69,11 @@ export default function ServicesTabs() {
 
   return (
     <section className="relative">
-     <div className="h-[30rem] md:h-[40rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start py-20">
-          <Tabs tabs={tabs} />
+      <div className="h-[30rem] md:h-[40rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start py-20">
+        <Tabs tabs={tabs} />
       </div>
 
-    <picture
-        className="cs-background absolute left-0 top-0 block h-full w-full -z-[1]"
-      >
+      <picture className="cs-background absolute left-0 top-0 block h-full w-full -z-[1]">
         <source
           media="(max-width: 1023px)"
           srcSet="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/dotted-texture-m.png"
@@ -129,9 +127,15 @@ const Tabs: React.FC<TabsProps> = ({
 
   return (
     <>
+      {/* Glassmorphism Tab Container */}
       <div
         className={cn(
-          "flex flex-row items-center justify-center backdrop-blur-sm [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+          // Base layout
+          "flex flex-row items-center justify-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+          // Glassmorphism styling
+          "backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-2 shadow-lg shadow-black/10",
+          // Dark mode support
+          "dark:bg-black/10 dark:border-white/10 dark:shadow-white/5",
           containerClassName
         )}
       >
@@ -141,7 +145,10 @@ const Tabs: React.FC<TabsProps> = ({
             onClick={() => moveSelectedTabToTop(idx)}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
-            className={cn("relative px-4 py-2 rounded-full", tabClassName)}
+            className={cn(
+              "relative px-4 py-2 rounded-full transition-all duration-300 ease-in-out",
+              tabClassName
+            )}
             style={{ transformStyle: "preserve-3d" }}
           >
             {active.value === tab.value && (
@@ -149,12 +156,19 @@ const Tabs: React.FC<TabsProps> = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 bg-gray-200 dark:bg-zinc-800 rounded-full",
+                  "absolute inset-0 bg-gradient-to-r from-orange-300 to-(--primary) rounded-full shadow-md",
                   activeTabClassName
                 )}
               />
             )}
-            <span className="relative block text-black dark:text-white">
+            <span
+              className={cn(
+                "relative block font-medium transition-colors duration-300 ease-in-out",
+                active.value === tab.value
+                  ? "text-[var(--bodyTextColorWhite)]"
+                  : "text-[var(--headerColor)]"
+              )}
+            >
               {tab.title}
             </span>
           </button>
