@@ -17,43 +17,43 @@ const services: Service[] = [
     name: 'Unclogging',
     title: 'Plugged Toilets, Sinks, Laundry Lines & Drains',
     text: 'For professional assistance with unclogging and restoring proper drainage, our experienced team offers efficient and reliable services. Trust us to quickly resolve any plumbing issues and ensure your facilities remain functioning smoothly.',
-    imgSrc: '/assets/images/unclogging.avif',
+    imgSrc: '/assets/images/services/unclogging.avif',
   },
   {
     name: 'Flushing',
     title: 'Flushing Drain Lines',
     text: 'We offer high-pressure flushing of drain lines to efficiently remove blockages and debris, ensuring optimal performance and preventing future issues. Our service utilizes advanced equipment to deliver thorough cleaning and restore proper flow in your drainage system.',
-    imgSrc: '/assets/images/flushing.avif',
+    imgSrc: '/assets/images/services/flushing.avif',
   },
   {
     name: 'Root Cutting',
     title: 'Root Cutting Services',
     text: 'We specialize in mainline and root-cutting services to efficiently clear blockages in plumbing systems, allowing for proper water flow and drainage. Our skilled technicians use advanced equipment to effectively remove roots and debris, restoring your pipes to optimal condition.',
-    imgSrc: '/assets/images/root-cutting.avif',
+    imgSrc: '/assets/images/services/root-cutting.avif',
   },
   {
     name: 'Video Inspection',
     title: 'Video Inspection',
     text: 'Our business specializes in video inspection and locating of drain lines, providing accurate and efficient solutions for identifying and resolving plumbing issues. With state-of-the-art technology and experienced professionals, we offer thorough inspections to detect blockages, leaks, or other problems within your drainage system.',
-    imgSrc: '/assets/images/video-inspection.avif',
+    imgSrc: '/assets/images/services/video-inspection.avif',
   },
   {
     name: 'Stack Cleaning',
     title: 'Stack Cleaning',
     text: "Our skilled technicians use industry-leading equipment and techniques to effectively remove debris, buildup, and blockages in sewer stacks, helping to prevent potential clogs and backups. Trust us to deliver thorough and reliable stack cleaning solutions that will keep your building's sewer system running smoothly.",
-    imgSrc: '/assets/images/stack-cleaning.avif',
+    imgSrc: '/assets/images/services/stack-cleaning.avif',
   },
   {
     name: 'Thawing frozen lines',
     title: 'Thawing out frozen drain lines',
     text: 'a quick and efficient service that helps prevent potential water damage and restores proper drainage functionality to your home or business. Our experienced team utilizes specialized equipment and techniques to safely and effectively eliminate blockages caused by freezing temperatures, ensuring that your plumbing system runs smoothly again.',
-    imgSrc: '/assets/images/thawing.avif',
+    imgSrc: '/assets/images/services/thawing.avif',
   },
   {
     name: 'Corrosion Removal',
     title: 'Corrosion Removal',
     text: 'We specialize in professional scraping services for sewer pipes, focusing on efficient and effective removal of tough built-up lines and corrosion. With years of experience and advanced equipment, we are able to tackle even the most challenging obstructions in sewer systems. Our expert team is dedicated to ensuring optimal flow and function in sewer pipes, allowing for seamless operation and reducing the risk of backups and blockages. Trust us to deliver high-quality scraping services that exceed your expectations and keep your sewer system running smoothly.',
-    imgSrc: '/assets/images/corrosion.avif',
+    imgSrc: '/assets/images/services/corrosion.avif',
   },
 ];
 
@@ -64,25 +64,91 @@ type Tab = {
 };
 
 export default function ServicesTabs() {
-  const tabs: Tab[] = services.map((service) => ({
+  const tabs: Tab[] = services.map((service, index) => ({
     title: service.name,
     value: service.name.toLowerCase().replace(/\s+/g, '-'),
     content: (
       <div className="w-full overflow-hidden relative h-full rounded-2xl text-white">
         {/* Glassmorphism gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-(--primary) via-[hsl(24.37,92.49%,48.24%)] to-orange-300 backdrop-blur-sm bg-opacity-80 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)] via-[hsl(24.37,92.49%,48.24%)] to-orange-300 backdrop-blur-sm bg-opacity-80 rounded-2xl"></div>
 
         {/* Glassmorphism overlay */}
         <div className="absolute inset-0 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl"></div>
 
-        {/* Content */}
-        <div className="relative z-10 p-6 md:p-10">
-          <h3 className="text-xl md:text-3xl font-bold mb-4 text-white drop-shadow-lg">
-            {service.title}
-          </h3>
-          <p className="text-sm md:text-base text-white/90 leading-relaxed">
-            {service.text}
-          </p>
+        {/* Content Container */}
+        <div className="relative z-10 h-full">
+          {/* Mobile/Tablet Layout (Column) */}
+          <div className="flex flex-col h-full lg:hidden">
+            {/* Image Section */}
+            <div className="flex-shrink-0 h-48 md:h-64 overflow-hidden">
+              <img
+                src={service.imgSrc}
+                alt={service.title}
+               loading="lazy"
+               decoding="async"
+               fetchPriority="auto"
+               width={300}
+               height={300}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content Section */}
+            <div className="flex-1 p-4 md:p-6 flex flex-col justify-between">
+              <div className="flex-1">
+                <h3 className="text-lg md:text-2xl font-bold mb-3 text-white drop-shadow-lg">
+                  {service.title}
+                </h3>
+                <p className="text-sm md:text-base text-white/90 leading-relaxed mb-4">
+                  {service.text}
+                </p>
+              </div>
+
+              <a
+                href="/contact"
+                className="cs-button-solid rounded-md w-full uppercase max-w-[430px] inline-block text-center py-3 px-6 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-medium hover:bg-white/30 transition-all duration-300"
+              >
+                Contact us
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop Layout (Side by Side) */}
+          <div className="hidden lg:flex h-full">
+            {/* Content Section */}
+            <div className={cn(
+              "flex-1 p-8 xl:p-10 flex flex-col justify-between",
+              index % 2 === 0 ? "order-1" : "order-2"
+            )}>
+              <div className="flex-1">
+                <h3 className="text-2xl xl:text-3xl font-bold mb-4 text-white drop-shadow-lg">
+                  {service.title}
+                </h3>
+                <p className="text-base xl:text-lg text-white/90 leading-relaxed mb-6">
+                  {service.text}
+                </p>
+              </div>
+
+              <a
+                href="/contact"
+                className="flex items-center justify-center cs-button-solid rounded-md w-full uppercase max-w-[430px] text-center py-3 px-6 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-medium hover:bg-white/30 transition-all duration-300 before:rounded-md"
+              >
+                Contact us
+              </a>
+            </div>
+
+            {/* Image Section */}
+            <div className={cn(
+              "flex-1 overflow-hidden",
+              index % 2 === 0 ? "order-2" : "order-1"
+            )}>
+              <img
+                src={service.imgSrc}
+                alt={service.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     ),
@@ -182,7 +248,7 @@ const Tabs: React.FC<TabsProps> = ({
                 )}
               >
                 {/* Gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-[hsl(24.37,92.49%,48.24%)] to-(--primary)"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-[hsl(24.37,92.49%,48.24%)] to-[var(--primary)]"></div>
 
                 {/* Glassmorphism overlay */}
                 <div className="absolute inset-0 backdrop-blur-sm bg-white/20 border border-white/30"></div>

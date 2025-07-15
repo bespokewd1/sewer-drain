@@ -1,10 +1,12 @@
-@import "tailwindcss" important;
 
 @import url("https://fonts.cdnfonts.com/css/montserrat");
 @import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 @import url('https://fonts.cdnfonts.com/css/muli');
+/* 1. Tailwind first */
+@import "tailwindcss" important;
 
-/* 2. Tell Tailwind the new font family */
+
+/* 3. Everything else */
 @theme {
   --font-montserrat: "Montserrat", sans-serif;
   --font-segoe: "Segoe UI", sans-serif;
@@ -12,14 +14,14 @@
 }
 
 .star {
-    @apply transition-colors duration-200;
+  @apply transition-colors duration-200;
 }
 
 .star:hover,
 .star.active,
-.star:has(~ .star:hover) ,
-.star:has(~ .star.active)  {
-    @apply text-yellow-400;
+.star:has(~ .star:hover),
+.star:has(~ .star.active) {
+  @apply text-yellow-400;
 }
 
 .no-visible-scrollbar {
