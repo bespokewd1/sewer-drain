@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import 'blaze-slider/dist/blaze.css';
 import Img from './Img.astro';
 
@@ -22,7 +21,7 @@ const testimonials = [
 <!-- "before:absolute before:left-0 before:top-0 before:h-[20%] before:w-full before:bg-gradient-to-b before:from-[#222222] before:to-[rgba(34,34,34,0)] before:opacity-100 ",
     "after:absolute after:bottom-0 after:left-0 after:h-[20%] after:w-full after:bg-gradient-to-b after:from-[rgba(34,34,34,0)] after:to-[#222222] after:opacity-100", -->
 <section
-  id="reviews-1833"
+  id="testimonials"
   class:list={[
     'relative z-[1] overflow-hidden bg-gray-100 py-[var(--sectionPadding)] ',
   ]}
@@ -31,7 +30,7 @@ const testimonials = [
     class="mx-auto flex max-w-[34.375rem] flex-col items-center gap-[clamp(3rem,6vw,4rem)] z-[1] relative md:max-w-[80rem]"
   >
     <div class="flex w-full flex-col items-center text-center">
-      <span class="cs-topper">Testimonials</span>
+      <span class="cs-topper text-(--primary)">Testimonials</span>
       <h2 class="cs-title m-0 max-w-[26ch] text-[var(--headerColor)]">
         Our Client Testimonials
       </h2>
